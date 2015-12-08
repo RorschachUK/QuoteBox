@@ -12,3 +12,16 @@ Address		Purpose
 {Address 1}	Quote 1's text, whose length has been stated
 {Address 2}	Quote 2's text
 ... etc
+
+To do this we'll start with a human-readable quotes file and use some Python to process it and construct the more machine-friendly index file, then use a Raspberry Pi to blast this in to the EEPROM.
+
+Step two - read EEPROM, extract quote
+The next phase of programming will shift across to an Arduino to try to interface to the EEPROM and manage to access a random quote by:
+* Getting the int from the first 2 bytes to find the number of entries
+* Picking a random entry up to that number
+* Going to the index at address 2 + entry * 3
+* Reading the address (32 bit long) and length (16 bit int) from the index
+* Going to that address and reading that many bytes into a string
+
+Step three - draw quote on screen nicely
+Interface with a small (160x128?) SPI screen and figure out how to draw our quote nicely, and what to do if it's too large (scroll slowly I expect)
