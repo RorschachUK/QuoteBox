@@ -1,3 +1,6 @@
+# Quotebox Loader - RorschachUK Dec 2015
+# This program reads a quotes file and produces a hex file to program an EEPROM
+
 import random
 
 def readQuotes(filename):
@@ -39,4 +42,4 @@ def PrintRandomQuote():
 def getQuote(idx):
     return quotes[idx].replace('\n',' ').replace('         ','\n')
 
-
+    
