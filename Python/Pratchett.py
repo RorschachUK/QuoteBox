@@ -43,3 +43,4 @@ def getQuote(idx):
     return quotes[idx].replace('\n',' ').replace('         ','\n')
 
     
+PrintRandomQuote()
