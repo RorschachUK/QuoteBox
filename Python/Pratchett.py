@@ -116,7 +116,7 @@ BLUE  = (  0,   0, 255)
 # draw on the surface object
 DISPLAYSURF.fill(WHITE)
 
-fontObj = pygame.font.Font('freesans.ttf', 6)
+fontObj = pygame.font.Font('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 6)
 
 DrawText(GetRandomQuote(), fontObj, 126)
 
