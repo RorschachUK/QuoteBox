@@ -5,6 +5,7 @@ from itertools import chain
 import pygame, sys, os, random
 from pygame.locals import *
 os.environ["SDL_FBDEV"] = "/dev/fb1"
+fontSize = 12
 
 def readQuotes(filename):
     f = open(filename)
@@ -115,7 +116,7 @@ BLUE  = (  0,   0, 255)
 # draw on the surface object
 DISPLAYSURF.fill(WHITE)
 
-fontObj = pygame.font.Font('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 10)
+fontObj = pygame.font.Font('/usr/share/fonts/truetype/freefont/FreeSans.ttf', fontSize)
 
 DrawText(GetRandomQuote(), fontObj, 126)
 
