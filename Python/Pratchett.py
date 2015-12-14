@@ -85,7 +85,7 @@ def wrap_multi_line(text, font, maxwidth):
     return list(lines)    
 
 def DrawText(msg, font, width):
-    lines = wrapline(msg, font, width)
+    lines = wrap_multi_line(msg, font, width)
     height = font.size(msg)[1]
     y = 1
     for line in lines:
@@ -96,10 +96,9 @@ def DrawText(msg, font, width):
         DISPLAYSURF.blit(msgSurf, msgRect)
         y += height
 
-PrintRandomQuote()
-
 pygame.init()
 
+pygame.mouse.set_visible(False)
 keepGoing = True
 
 # set up the window
@@ -116,7 +115,7 @@ BLUE  = (  0,   0, 255)
 # draw on the surface object
 DISPLAYSURF.fill(WHITE)
 
-fontObj = pygame.font.Font('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 6)
+fontObj = pygame.font.Font('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 10)
 
 DrawText(GetRandomQuote(), fontObj, 126)
 
