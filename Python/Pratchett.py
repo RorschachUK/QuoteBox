@@ -121,6 +121,7 @@ while keepGoing:
             printed = False
             while not printed:
                 printed = DrawText(GetRandomQuote(), fontObj, 126)
+            ticks = time.time()
             changeRequested = False
     except KeyboardInterrupt:
         keepGoing = False
