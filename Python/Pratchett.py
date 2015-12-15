@@ -113,6 +113,7 @@ while keepGoing:
                 keepGoing = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
+                    DISPLAYSURF.fill((127 + random.choice(range(128)), 127 + random.choice(range(128)), 127 + random.choice(range(128)))
                     printed = False
                     while not printed:
                         printed = DrawText(GetRandomQuote(), fontObj, 126)
