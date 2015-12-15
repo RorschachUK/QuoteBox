@@ -1,5 +1,5 @@
 # Quotebox Loader - RorschachUK Dec 2015
-# This program reads a quotes file and produces a hex file to program an EEPROM
+# This program reads a quotes file and displays on a small screen
 
 from itertools import chain
 import pygame, sys, os, random
