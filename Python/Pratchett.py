@@ -113,7 +113,7 @@ while keepGoing:
                     changeRequested = True
                 elif event.key == pygame.K_ESCAPE or event.key == (pygame.KMOD_LCTRL | pygame.K_c):
                     keepGoing = False
-        if time.time() - ticks > 30:
+        if time.time() - ticks > 15:
             ticks = time.time()
             changeRequested = True
         if changeRequested == True:
