@@ -2,7 +2,7 @@
 # This program reads a quotes file and displays on a small screen
 
 from itertools import chain
-import pygame, sys, os, random
+import pygame, sys, os, random, time
 from pygame.locals import *
 os.environ["SDL_FBDEV"] = "/dev/fb1"
 fontSize = 12
@@ -82,8 +82,12 @@ def DrawText(msg, font, width):
 #Startup
 pygame.init()
 
+ticks = time.time()
+
 pygame.mouse.set_visible(False)
+
 keepGoing = True
+changeRequested = True
 
 # set up the window
 DISPLAYSURF = pygame.display.set_mode((128, 160), 0, 32)
@@ -96,14 +100,7 @@ RED   = (255,   0,   0)
 GREEN = (  0, 255,   0)
 BLUE  = (  0,   0, 255)
 
-# draw on the surface object
-DISPLAYSURF.fill(WHITE)
-
 fontObj = pygame.font.Font('/usr/share/fonts/truetype/freefont/FreeSans.ttf', fontSize)
-
-printed = False
-while not printed:
-    printed = DrawText(GetRandomQuote(), fontObj, 126)
 
 # run the game loop
 while keepGoing:
@@ -113,10 +110,18 @@ while keepGoing:
                 keepGoing = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    DISPLAYSURF.fill((127 + random.choice(range(128)), 127 + random.choice(range(128)), 127 + random.choice(range(128))))
-                    printed = False
-                    while not printed:
-                        printed = DrawText(GetRandomQuote(), fontObj, 126)
+                    changeRequested = True
+                elif event.key == pygame.K_ESCAPE or event.key == (pygame.KMOD_LCTRL | pygame.K_c):
+                    keepGoing = False
+        if time.time() - ticks > 30:
+            ticks = time.time()
+            changeRequested = True
+        if changeRequested == True:
+            DISPLAYSURF.fill((127 + random.choice(range(128)), 127 + random.choice(range(128)), 127 + random.choice(range(128))))
+            printed = False
+            while not printed:
+                printed = DrawText(GetRandomQuote(), fontObj, 126)
+            changeRequested = False
     except KeyboardInterrupt:
         keepGoing = False
     pygame.display.update()
